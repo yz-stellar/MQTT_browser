@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>publisher__browser</title>
+</head>
+
+<body>
+    <script src="./node_modules/mqtt/browserMqtt.js"></script>
+    <script>
+        let ipAddress = 'ws://test.mosquitto.org:8080'
+    //    let ipAddress = 'ws://192.168.10.160:1883';
+       let topic= 'mytopic';
+       let msg = 'Hello MQTT :)';
+
+
+
+        var client = mqtt.connect(ipAddress);
+
+        // client.on('message', function(topic, payload) {
+        //     console.log([payload].join('')); 
+        // })
+
+        setInterval(function() {
+            client.publish(topic, msg);
+            console.log(`publish MESSAGE ${msg} to TOPIC ${topic} to ${ipAddress}`);
+        }, 1000);
+       
+    </script>
+
+
+</body>
+
+</html>
